@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Console\\App\\Commands\\HelloworldCommand' => $baseDir . '/src/App/Commands/HelloworldCommand.php',
+    'Console\\App\\Commands\\CreateProjectCommand' => $baseDir . '/src/App/Commands/CreateProjectCommand.php',
     'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
 );
