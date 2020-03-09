@@ -12,7 +12,6 @@ class ComposerStaticInit7fed35ca4d087ebe5f961f627d4f9a1b
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -23,7 +22,6 @@ class ComposerStaticInit7fed35ca4d087ebe5f961f627d4f9a1b
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
             'Symfony\\Polyfill\\Intl\\Grapheme\\' => 31,
             'Symfony\\Contracts\\Service\\' => 26,
-            'Symfony\\Component\\VarDumper\\' => 28,
             'Symfony\\Component\\String\\' => 25,
             'Symfony\\Component\\Console\\' => 26,
         ),
@@ -31,10 +29,6 @@ class ComposerStaticInit7fed35ca4d087ebe5f961f627d4f9a1b
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
-        ),
-        'F' => 
-        array (
-            'Faker\\' => 6,
         ),
         'C' => 
         array (
@@ -63,10 +57,6 @@ class ComposerStaticInit7fed35ca4d087ebe5f961f627d4f9a1b
         array (
             0 => __DIR__ . '/..' . '/symfony/service-contracts',
         ),
-        'Symfony\\Component\\VarDumper\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/var-dumper',
-        ),
         'Symfony\\Component\\String\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/string',
@@ -82,10 +72,6 @@ class ComposerStaticInit7fed35ca4d087ebe5f961f627d4f9a1b
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
-        ),
-        'Faker\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
         'Console\\' => 
         array (
