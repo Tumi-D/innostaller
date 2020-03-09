@@ -23,6 +23,7 @@ class ComposerStaticInit7fed35ca4d087ebe5f961f627d4f9a1b
             'Symfony\\Polyfill\\Intl\\Grapheme\\' => 31,
             'Symfony\\Contracts\\Service\\' => 26,
             'Symfony\\Component\\String\\' => 25,
+            'Symfony\\Component\\Process\\' => 26,
             'Symfony\\Component\\Console\\' => 26,
         ),
         'P' => 
@@ -60,6 +61,10 @@ class ComposerStaticInit7fed35ca4d087ebe5f961f627d4f9a1b
         'Symfony\\Component\\String\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/string',
+        ),
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
         ),
         'Symfony\\Component\\Console\\' => 
         array (
