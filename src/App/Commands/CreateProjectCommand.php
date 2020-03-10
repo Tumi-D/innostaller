@@ -115,7 +115,7 @@ class CreateProjectCommand extends Command
 
     private function delete($file, Output $output, $path)
     {
-        $path = dirname(dirname(dirname(dirname(__FILE__))));
+        // $path = dirname(dirname(dirname(dirname(__FILE__))));
 
         $file_pointer =  $path . '\\' . $file . ".zip";
         @chmod($file_pointer, 0777);
