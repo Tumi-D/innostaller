@@ -53,23 +53,23 @@ class CreateProjectCommand extends Command
         $end_time = microtime(true);
         $execution_time = (string) ($end_time - $start_time);
         $execution_time = substr($execution_time, 0, 8);
-        $process = Process::fromShellCommandline(implode(' && ', $commands), $directory, null, null, null);
+        // $process = Process::fromShellCommandline(implode(' && ', $commands), $directory, null, null, null);
 
-        if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
-            try {
-                $process->setTty(true);
-            } catch (RuntimeException $e) {
-                $output->writeln('Warning: ' . $e->getMessage());
-            }
-        }
+        // if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
+        //     try {
+        //         $process->setTty(true);
+        //     } catch (RuntimeException $e) {
+        //         $output->writeln('Warning: ' . $e->getMessage());
+        //     }
+        // }
 
-        $process->run(function ($type, $line) use ($output) {
-            $output->write($line);
-        });
-        if ($process->isSuccessful()) {
-            $output->writeln('<comment>Hope %s is something amazing. Goodluck ! %s secs</comment>', $input->getArgument('projectname'), $execution_time);
-        }
-        // $output->writeln(sprintf('<info>Hope %s is something amazing. Goodluck ! %s secs </info>', $input->getArgument('projectname'), $execution_time));
+        // $process->run(function ($type, $line) use ($output) {
+        //     $output->write($line);
+        // });
+        // if ($process->isSuccessful()) {
+        //     $output->writeln('<comment>Hope %s is something amazing. Goodluck ! %s secs</comment>', $input->getArgument('projectname'), $execution_time);
+        // }
+        $output->writeln(sprintf('<info>Hope %s is something amazing. Goodluck ! %s secs </info>', $input->getArgument('projectname'), $execution_time));
         return 0;
     }
 

@@ -1,1 +1,1 @@
-# Laravel Installer
+# Innotize Installer
