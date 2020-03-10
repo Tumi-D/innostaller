@@ -117,7 +117,7 @@ class CreateProjectCommand extends Command
     {
         // $path = dirname(dirname(dirname(dirname(__FILE__))));
 
-        $file_pointer =  $path . '\\' . $file . ".zip";
+        $file_pointer =  $path . ".zip";
         @chmod($file_pointer, 0777);
 
         // Use unlink() function to delete a file  
