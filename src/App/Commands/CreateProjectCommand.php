@@ -75,7 +75,9 @@ class CreateProjectCommand extends Command
 
     private function unzip($file, OutputInterface $output, $directory)
     {
+
         $filename = substr($file, 0, -4);
+        $directory = str_replace($filename, '', $directory);
         $unzip = new ZipArchive;
         $out = $unzip->open($file);
         if ($out === TRUE) {
