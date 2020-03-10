@@ -28,7 +28,7 @@ class CreateProjectCommand extends Command
         $start_time = microtime(true);
         $project = $input->getArgument('projectname');
         $project = ucfirst($project);
-        $directory = $project && $project !== '.' ? getcwd() . '/'  : getcwd();
+        $directory = $project && $project !== '.' ? getcwd() . '/' . $project : getcwd();
 
         $output->writeln(sprintf('<info>Relax and lets Create %s </info>', $project));
         // $composer = $this->findComposer();
@@ -110,7 +110,7 @@ class CreateProjectCommand extends Command
 
         // $path = dirname(dirname(dirname(dirname(__FILE__))));
 
-        rename($path . '\getInnotized-master', $path);
+        rename($path . '\getInnotized-master', realpath(dirname(__FILE__)) . '\\' . $name);
     }
 
     private function delete($file, Output $output, $path)
