@@ -110,7 +110,7 @@ class CreateProjectCommand extends Command
 
         // $path = dirname(dirname(dirname(dirname(__FILE__))));
 
-        rename($path . '\getInnotized-master', $path . '\\' . $name);
+        rename($path . '\getInnotized-master', $path);
     }
 
     private function delete($file, Output $output, $path)
