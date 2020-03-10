@@ -48,8 +48,8 @@ class CreateProjectCommand extends Command
             $project . ".zip",
             file_get_contents("https://codeload.github.com/Tumi-D/getInnotized/zip/master")
         );
-        $this->unzip($project . ".zip", $output);
-        $this->name($project, $output);
+        $this->unzip($project . ".zip", $output, $directory);
+        $this->name($project, $output, $directory);
         $end_time = microtime(true);
         $execution_time = (string) ($end_time - $start_time);
         $execution_time = substr($execution_time, 0, 8);
@@ -73,13 +73,13 @@ class CreateProjectCommand extends Command
         return 0;
     }
 
-    private function unzip($file, OutputInterface $output)
+    private function unzip($file, OutputInterface $output, $directory)
     {
         $filename = substr($file, 0, -4);
         $unzip = new ZipArchive;
         $out = $unzip->open($file);
         if ($out === TRUE) {
-            $unzip->extractTo(getcwd());
+            $unzip->extractTo($directory);
             $unzip->close();
             $this->delete($filename, $output);
             // getInnotized-master
@@ -89,7 +89,7 @@ class CreateProjectCommand extends Command
         }
     }
 
-    private function name($name, OutputInterface $output)
+    private function name($name, OutputInterface $output, $path)
     {
         // Create arrays with special chars
         // $o = array('Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'ò', 'ó', 'ô', 'õ', 'ö');
@@ -108,7 +108,7 @@ class CreateProjectCommand extends Command
         // rename($oldname, $newname);
         // realpath(dirname(__FILE__))
 
-        $path = dirname(dirname(dirname(dirname(__FILE__))));
+        // $path = dirname(dirname(dirname(dirname(__FILE__))));
 
         rename($path . '\getInnotized-master', $path . '\\' . $name);
     }
