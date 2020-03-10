@@ -2,13 +2,15 @@
 
 namespace Console\App\Commands;
 
-
+use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\Output;
+use Symfony\Component\Process\Process;
+
 use ZipArchive;
 
 class CreateProjectCommand extends Command
@@ -26,9 +28,16 @@ class CreateProjectCommand extends Command
         $start_time = microtime(true);
         $project = $input->getArgument('projectname');
         $project = ucfirst($project);
+        $directory = $project && $project !== '.' ? getcwd() . '/' . $project : getcwd();
 
         $output->writeln(sprintf('<info>Relax and lets Create %s </info>', $project));
-
+        // $composer = $this->findComposer();
+        $commands = [
+            // $composer . ' install --no-scripts',
+            // $composer . ' run-script post-root-package-install',
+            // $composer . ' run-script post-create-project-cmd',
+            // $composer . ' run-script post-autoload-dump',
+        ];
         // $ctx = stream_context_create();
         // stream_context_set_params($ctx, array("notification" => "stream_notification_callback"));
         // $fileData = @file_get_contents('https://codeload.github.com/Tumi-D/getInnotized/zip/master', false, $ctx);
@@ -44,7 +53,23 @@ class CreateProjectCommand extends Command
         $end_time = microtime(true);
         $execution_time = (string) ($end_time - $start_time);
         $execution_time = substr($execution_time, 0, 8);
-        $output->writeln(sprintf('<info>Hope %s is something amazing. Goodluck ! %s secs </info>', $input->getArgument('projectname'), $execution_time));
+        $process = Process::fromShellCommandline(implode(' && ', $commands), $directory, null, null, null);
+
+        if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
+            try {
+                $process->setTty(true);
+            } catch (RuntimeException $e) {
+                $output->writeln('Warning: ' . $e->getMessage());
+            }
+        }
+
+        $process->run(function ($type, $line) use ($output) {
+            $output->write($line);
+        });
+        if ($process->isSuccessful()) {
+            $output->writeln('<comment>Hope %s is something amazing. Goodluck ! %s secs</comment>', $input->getArgument('projectname'), $execution_time);
+        }
+        // $output->writeln(sprintf('<info>Hope %s is something amazing. Goodluck ! %s secs </info>', $input->getArgument('projectname'), $execution_time));
         return 0;
     }
 
@@ -93,10 +118,27 @@ class CreateProjectCommand extends Command
         $path = dirname(dirname(dirname(dirname(__FILE__))));
 
         $file_pointer =  $path . '\\' . $file . ".zip";
+        @chmod($file_pointer, 0777);
 
         // Use unlink() function to delete a file  
         if (!unlink($file_pointer)) {
             $output->writeln(sprintf('<error> %s cannot be deleted due to an error </error>', $file));
         }
+    }
+
+    /**
+     * Get the composer command for the environment.
+     *
+     * @return string
+     */
+    protected function findComposer()
+    {
+        $composerPath = getcwd() . '/composer.phar';
+
+        if (file_exists($composerPath)) {
+            return '"' . PHP_BINARY . '" ' . $composerPath;
+        }
+
+        return 'composer';
     }
 }
