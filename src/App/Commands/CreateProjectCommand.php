@@ -81,7 +81,7 @@ class CreateProjectCommand extends Command
         if ($out === TRUE) {
             $unzip->extractTo($directory);
             $unzip->close();
-            $this->delete($filename, $output);
+            $this->delete($filename, $output, $directory);
             // getInnotized-master
             // $output->writeln(sprintf('<info>%s unzipped successfully  </info>', $file));
         } else {
@@ -113,7 +113,7 @@ class CreateProjectCommand extends Command
         rename($path . '\getInnotized-master', $path . '\\' . $name);
     }
 
-    private function delete($file, Output $output)
+    private function delete($file, Output $output, $path)
     {
         $path = dirname(dirname(dirname(dirname(__FILE__))));
 
