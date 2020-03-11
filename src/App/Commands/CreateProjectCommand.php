@@ -29,6 +29,12 @@ class CreateProjectCommand extends Command
         $project = $input->getArgument('projectname');
         $project = ucfirst($project);
         $directory = $project && $project !== '.' ? getcwd() . '/'  : getcwd();
+        $checkdirectory = getcwd() . '\\' . $project;
+        if ($this->folder_exist($project) == $checkdirectory) {
+
+            $output->writeln(sprintf('<error>Oops %s already exists </error>', $project));
+            return 0;
+        }
 
         $output->writeln(sprintf('<info>Relax and lets Create %s </info>', $project));
         // $composer = $this->findComposer();
@@ -120,5 +126,17 @@ class CreateProjectCommand extends Command
         }
 
         return 'composer';
+    }
+
+    /** Check if folder exists
+     * @return bool
+     */
+    protected function folder_exist($folder)
+    {
+        // Get canonicalized absolute pathname
+        $path = realpath($folder);
+
+        // If it exist, check if it's a directory
+        return ($path !== false and is_dir($path)) ? $path : false;
     }
 }
