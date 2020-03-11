@@ -82,7 +82,7 @@ class CreateProjectCommand extends Command
             $unzip->extractTo($directory);
             $unzip->close();
             $this->delete($filename, $output, $directory);
-            // getInnotized-master
+            //getInnotized-master
             // $output->writeln(sprintf('<info>%s unzipped successfully  </info>', $file));
         } else {
             $output->writeln(sprintf('<error>Failed to unzip %s </error>', $file));
@@ -91,25 +91,6 @@ class CreateProjectCommand extends Command
 
     private function name($name, OutputInterface $output, $path)
     {
-        // Create arrays with special chars
-        // $o = array('Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'ò', 'ó', 'ô', 'õ', 'ö');
-        // // Remember to remove the slash at the end otherwise it will not work
-        // $oldname = 'getInnotized-master';
-        // // Get the directory name
-        // $old_dir_name = substr($oldname, strrpos($oldname, '/') + 1);
-
-        // // Replace any special chars with your choice
-        // $new_dir_name = str_replace($o, 'O', $old_dir_name);
-
-        // // Define the new directory
-        // $newname = '/path/to/new_directory/' . $new_dir_name;
-
-        // // Renames the directory
-        // rename($oldname, $newname);
-        // realpath(dirname(__FILE__))
-
-        // $path = dirname(dirname(dirname(dirname(__FILE__))));
-
         rename($path . '\getInnotized-master', $path . '\\' . $name);
     }
 
@@ -128,7 +109,6 @@ class CreateProjectCommand extends Command
 
     /**
      * Get the composer command for the environment.
-     *
      * @return string
      */
     protected function findComposer()
