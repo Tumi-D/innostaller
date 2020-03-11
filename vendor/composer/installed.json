@@ -186,12 +186,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
-            "reference": "f801c1bec10d53698f339f3023272a801a81af2e"
+            "reference": "b6786f69dd7b062390582f20520ab4918283217e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/f801c1bec10d53698f339f3023272a801a81af2e",
-            "reference": "f801c1bec10d53698f339f3023272a801a81af2e",
+            "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/b6786f69dd7b062390582f20520ab4918283217e",
+            "reference": "b6786f69dd7b062390582f20520ab4918283217e",
             "shasum": ""
         },
         "require": {
@@ -200,7 +200,7 @@
         "suggest": {
             "ext-intl": "For best performance"
         },
-        "time": "2020-02-27T09:26:54+00:00",
+        "time": "2020-03-09T19:04:49+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -313,12 +313,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "766ee47e656529b352da69c0ff29da928a9629e7"
+            "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/766ee47e656529b352da69c0ff29da928a9629e7",
-            "reference": "766ee47e656529b352da69c0ff29da928a9629e7",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
+            "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
             "shasum": ""
         },
         "require": {
@@ -327,7 +327,7 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2020-02-27T09:26:54+00:00",
+        "time": "2020-03-09T19:04:49+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
