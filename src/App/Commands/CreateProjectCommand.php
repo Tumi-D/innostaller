@@ -110,14 +110,14 @@ class CreateProjectCommand extends Command
 
         // $path = dirname(dirname(dirname(dirname(__FILE__))));
 
-        rename(realpath(dirname(__FILE__)) . '\getInnotized-master', realpath(dirname(__FILE__)) . '\\' . $name);
+        rename($path . '\getInnotized-master', $path . '\\' . $name);
     }
 
     private function delete($file, Output $output, $path)
     {
         // $path = dirname(dirname(dirname(dirname(__FILE__))));
 
-        $file_pointer =  $path . ".zip";
+        $file_pointer =  $path . '\\' . $file . ".zip";
         @chmod($file_pointer, 0777);
 
         // Use unlink() function to delete a file  
