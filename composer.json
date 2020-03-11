@@ -1,7 +1,7 @@
 {
   "name": "innotize/installer",
   "type": "library",
-  "description": "Get Innotized Framework package creation",
+  "description": "GetInnotized Framework installer",
   "keywords": [
     "framework",
     "php",
