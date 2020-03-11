@@ -28,7 +28,7 @@ class CreateProjectCommand extends Command
         $start_time = microtime(true);
         $project = $input->getArgument('projectname');
         $project = ucfirst($project);
-        $directory = $project && $project !== '.' ? getcwd() . '/' . $project : getcwd();
+        $directory = $project && $project !== '.' ? getcwd() . '/'  : getcwd();
 
         $output->writeln(sprintf('<info>Relax and lets Create %s </info>', $project));
         // $composer = $this->findComposer();
