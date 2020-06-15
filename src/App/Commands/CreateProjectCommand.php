@@ -37,6 +37,8 @@ class CreateProjectCommand extends Command
         }
 
         $output->writeln(sprintf('<info>Relax and lets Create %s </info>', $project));
+        $output->writeln('<comment>--</comment>');
+
         // $composer = $this->findComposer();
         $commands = [
             // $composer . ' install --no-scripts',
@@ -102,8 +104,6 @@ class CreateProjectCommand extends Command
 
     private function delete($file, Output $output, $path)
     {
-        // $path = dirname(dirname(dirname(dirname(__FILE__))));
-
         $file_pointer =  $path . '\\' . $file . ".zip";
         @chmod($file_pointer, 0777);
 
