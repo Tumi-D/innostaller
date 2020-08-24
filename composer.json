@@ -4,7 +4,7 @@
   "description": "GetInnotized Framework installer",
   "keywords": [
     "framework",
-    "php",
+    "innotize",
     "eloquent",
     "Object Oriented Architecture",
     "Innotize"
@@ -19,7 +19,7 @@
       "role": "Developer"
     }
   ],
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "require": {
     "php": ">=7.1.0",
     "psr/log": "^1.1",
