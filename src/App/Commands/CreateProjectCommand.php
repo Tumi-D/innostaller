@@ -26,16 +26,17 @@ class CreateProjectCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $outputStyle = new OutputFormatterStyle('blue', 'black', ['bold', 'bold']);
+        $outputStyle = new OutputFormatterStyle('blue', 'black', ['bold', 'blink']);
        $output->getFormatter()->setStyle('innotize', $outputStyle);
         // $project = $input->getArgument('projectname');
         $output->writeln(sprintf('<innotize> ___         _____                       </innotize>'));
         $output->writeln(sprintf('<innotize>|  __  _ ___   |         ___  ___ _ _  ___ ___ _          </innotize>'));
         $output->writeln(sprintf('<innotize>|   | |_  |    |   |\ |  |  |  |   |     / |__ |\    </innotize>'));
         $output->writeln(sprintf('<innotize>|___| |_  |  __|__ | \|  |__|  |  _|_   /__|__ |_|           </innotize>'));
+        $output->writeln(sprintf('<innotize>           </innotize>'));
+        // $output->writeln(sprintf('<innotize>        </innotize>'));
 
-
-
+        // $output->writeln('Get in touch with the author <href=https://symfony.com>Prince Oduro</>');
         
         $start_time = microtime(true);
         $project = $input->getArgument('projectname');
