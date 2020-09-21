@@ -30,7 +30,7 @@ class CreateProjectCommand extends Command
        $output->getFormatter()->setStyle('innotize', $outputStyle);
         // $project = $input->getArgument('projectname');
         $output->writeln(sprintf('<innotize> ___         _____                       </innotize>'));
-        $output->writeln(sprintf('<innotize>|  __  _ ___   |          __  ___ _ _  ___ ___ _          </innotize>'));
+        $output->writeln(sprintf('<innotize>|  __  _ ___   |          __  ___ _ _  ___ ___ .         </innotize>'));
         $output->writeln(sprintf('<innotize>|   | |_  |    |   |\ |  |  |  |   |     / |__ |\    </innotize>'));
         $output->writeln(sprintf('<innotize>|___| |_  |  __|__ | \|  |__|  |  _|_   /__|__ |_|           </innotize>'));
         $output->writeln(sprintf('<innotize>           </innotize>'));
