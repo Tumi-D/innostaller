@@ -29,11 +29,11 @@ class CreateProjectCommand extends Command
         $outputStyle = new OutputFormatterStyle('blue', 'black', ['bold', 'blink']);
        $output->getFormatter()->setStyle('innotize', $outputStyle);
         // $project = $input->getArgument('projectname');
-        $output->writeln(sprintf('<innotize> ___         _____                       </innotize>'));
-        $output->writeln(sprintf('<innotize>|  __  _ ___   |          __  ___ _ _  ___ ___ ___  .         </innotize>'));
-        $output->writeln(sprintf('<innotize>|   | |_  |    |   |\ |  |  |  |   |     /   / |__  |\    </innotize>'));
+        $output->writeln(sprintf('<innotize> ___         _____                                                </innotize>'));
+        $output->writeln(sprintf('<innotize>|  __  _ ___   |          __  ___ _ _  ___ ___ ___  .             </innotize>'));
+        $output->writeln(sprintf('<innotize>|   | |_  |    |   |\ |  |  |  |   |     /   / |__  |\            </innotize>'));
         $output->writeln(sprintf('<innotize>|___| |_  |  __|__ | \|  |__|  |  _|_   /_  /_ |__  |_|           </innotize>'));
-        $output->writeln(sprintf('<innotize>           </innotize>'));
+        $output->writeln(sprintf('<innotize>                                                                  </innotize>'));
         // $output->writeln(sprintf('<innotize>        </innotize>'));
 
         // $output->writeln('Get in touch with the author <href=https://symfony.com>Prince Oduro</>');
