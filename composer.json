@@ -5,9 +5,8 @@
   "keywords": [
     "framework",
     "innotize",
-    "eloquent",
     "Object Oriented Architecture",
-    "Innotize"
+    "getInnotized"
   ],
   "homepage": "https://debrah.herokuapp.com",
   "license": "MIT",
