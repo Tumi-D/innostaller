@@ -10,6 +10,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 
 use ZipArchive;
 
@@ -25,27 +26,37 @@ class CreateProjectCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $outputStyle = new OutputFormatterStyle('blue', 'black', ['bold', 'bold']);
+       $output->getFormatter()->setStyle('innotize', $outputStyle);
+        // $project = $input->getArgument('projectname');
+        $output->writeln(sprintf('<innotize> ___         _____                       </innotize>'));
+        $output->writeln(sprintf('<innotize>|  __  _ ___   |         ___  ___ _ _  ___ ___ _          </innotize>'));
+        $output->writeln(sprintf('<innotize>|   | |_  |    |   |\ |  |  |  |   |     / |__ |\    </innotize>'));
+        $output->writeln(sprintf('<innotize>|___| |_  |  __|__ | \|  |__|  |  _|_   /__|__ |_|           </innotize>'));
+
+
+
+        
         $start_time = microtime(true);
         $project = $input->getArgument('projectname');
         $project = ucfirst($project);
         $directory = $project && $project !== '.' ? getcwd() . '/'  : getcwd();
         $checkdirectory = getcwd() . '\\' . $project;
         if ($this->folder_exist($project) == $checkdirectory) {
-
             $output->writeln(sprintf('<error>Oops %s already exists </error>', $project));
             return 0;
         }
 
         $output->writeln(sprintf('<info>Relax and lets Create %s </info>', $project));
-        $output->writeln('<comment>--</comment>');
+
 
         // $composer = $this->findComposer();
-        $commands = [
-            // $composer . ' install --no-scripts',
-            // $composer . ' run-script post-root-package-install',
-            // $composer . ' run-script post-create-project-cmd',
-            // $composer . ' run-script post-autoload-dump',
-        ];
+        // $commands = [
+        //     $composer . ' install --no-scripts',
+        //     $composer . ' run-script post-root-package-install',
+        //     $composer . ' run-script post-create-project-cmd',
+        //     $composer . ' run-script post-autoload-dump',
+        // ];
         // $ctx = stream_context_create();
         // stream_context_set_params($ctx, array("notification" => "stream_notification_callback"));
         // $fileData = @file_get_contents('https://codeload.github.com/Tumi-D/getInnotized/zip/master', false, $ctx);
@@ -61,6 +72,7 @@ class CreateProjectCommand extends Command
         $end_time = microtime(true);
         $execution_time = (string) ($end_time - $start_time);
         $execution_time = substr($execution_time, 0, 8);
+        
         // $process = Process::fromShellCommandline(implode(' && ', $commands), $directory, null, null, null);
 
         // if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
@@ -78,6 +90,7 @@ class CreateProjectCommand extends Command
         //     $output->writeln('<comment>Hope %s is something amazing. Goodluck ! %s secs</comment>', $input->getArgument('projectname'), $execution_time);
         // }
         $output->writeln(sprintf('<info>Hope %s is something amazing. Goodluck ! %s secs </info>', $input->getArgument('projectname'), $execution_time));
+        
         return 0;
     }
 
