@@ -16,6 +16,7 @@ use ZipArchive;
 
 class CreateProjectCommand extends Command
 {
+    private $repo ="https://codeload.github.com/Tumi-D/getInnotized/zip/master";
     protected function configure()
     {
         $this->setName('create')
@@ -66,32 +67,22 @@ class CreateProjectCommand extends Command
 
         file_put_contents(
             $project . ".zip",
-            file_get_contents("https://codeload.github.com/Tumi-D/getInnotized/zip/master")
+            $file =  @file_get_contents($this->repo)
         );
+        if ($file === FALSE) {
+            $error = error_get_last();
+
+            $output->writeln(sprintf("<error>Download failed because {$error['message']} </error>"));
+            exit;
+        }
+        // $result = $this->download($this->repo,$project . ".zip");
+
         $this->unzip($project . ".zip", $output, $directory);
         $this->name($project, $output, $directory);
         $end_time = microtime(true);
         $execution_time = (string) ($end_time - $start_time);
-        $execution_time = substr($execution_time, 0, 8);
-        
-        // $process = Process::fromShellCommandline(implode(' && ', $commands), $directory, null, null, null);
-
-        // if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
-        //     try {
-        //         $process->setTty(true);
-        //     } catch (RuntimeException $e) {
-        //         $output->writeln('Warning: ' . $e->getMessage());
-        //     }
-        // }
-
-        // $process->run(function ($type, $line) use ($output) {
-        //     $output->write($line);
-        // });
-        // if ($process->isSuccessful()) {
-        //     $output->writeln('<comment>Hope %s is something amazing. Goodluck ! %s secs</comment>', $input->getArgument('projectname'), $execution_time);
-        // }
-        $output->writeln(sprintf('<info>Hope %s is something amazing. Goodluck ! %s secs </info>', $input->getArgument('projectname'), $execution_time));
-        
+        $execution_time = substr($execution_time, 0, 4);
+        $output->writeln(sprintf('<info>Hope %s is something amazing. Goodluck ! %s secs </info>', $input->getArgument('projectname'), $execution_time));     
         return 0;
     }
 
@@ -152,5 +143,25 @@ class CreateProjectCommand extends Command
 
         // If it exist, check if it's a directory
         return ($path !== false and is_dir($path)) ? $path : false;
+    }
+    protected function download($file_source, $file_target) {
+        $rh = fopen($file_source, 'rb');
+        $wh = fopen($file_target, 'w+b');
+        if (!$rh || !$wh) {
+            return false;
+        }
+    
+        while (!feof($rh)) {
+            if (fwrite($wh, fread($rh, 4096)) === FALSE) {
+                return false;
+            }
+            echo ' ';
+            flush();
+        }
+    
+        fclose($rh);
+        fclose($wh);
+    
+        return true;
     }
 }
