@@ -50,7 +50,7 @@ class CreateProjectCommand extends Command
         $project = $input->getArgument('projectname');
         $project = ucfirst($project);
         $directory = $project && $project !== '.' ? getcwd() . '/'  : getcwd();
-        $checkdirectory = getcwd() . '\\' . $project;
+        $checkdirectory = getcwd() . '/' . $project;
         if ($this->folder_exist($project) == $checkdirectory) {
             $output->writeln(sprintf('<error>Oops %s already exists </error>', $project));
             return 0;
@@ -111,7 +111,7 @@ class CreateProjectCommand extends Command
 
     private function name($name, OutputInterface $output, $path)
     {
-        rename($path . '\getInnotized-master', $path . '\\' . $name);
+        rename($path . '/getInnotized-master', $path . '/' . $name);
     }
 
     private function delete($file, Output $output, $path)
