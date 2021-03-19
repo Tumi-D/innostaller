@@ -16,6 +16,13 @@ use ZipArchive;
 
 class CreateProjectCommand extends Command
 {
+    private $options=array(
+        "ssl"=>array(
+            "verify_peer"=>false,
+            "verify_peer_name"=>false,
+        ),
+    );  
+    // $r = file_get_contents("https://yoursite.com/", false, stream_context_create($options));
     private $repo ="https://codeload.github.com/Tumi-D/getInnotized/zip/master";
     protected function configure()
     {
@@ -67,7 +74,7 @@ class CreateProjectCommand extends Command
 
         file_put_contents(
             $project . ".zip",
-            $file =  @file_get_contents($this->repo)
+            $file =  @file_get_contents($this->repo,false, stream_context_create($this->options))
         );
         if ($file === FALSE) {
             $error = error_get_last();
