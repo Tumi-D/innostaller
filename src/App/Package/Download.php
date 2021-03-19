@@ -59,5 +59,5 @@ if (is_resource($fp) && file_put_contents($argv[2], $fp)) {
 }
 
 $err = error_get_last();
-echo "\nErrrrrorr..\n", $err["message"], "\n";
+echo "\nError..\n", $err["message"], "\n";
 exit(1);
